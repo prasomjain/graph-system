@@ -25,16 +25,16 @@ The system is split into modular backend and frontend services.
 
 ```mermaid
 flowchart LR
-  A[data/*.jsonl] --> B[backend/ingest_jsonl.py]
-  B --> C[NetworkX DiGraph]
-  C --> D[frontend/src/assets/processed_graph.json]
-  D --> E[FastAPI backend/main.py startup load]
-  F[React ChatBox] -->|POST /api/chat| E
-  E --> G[LLM layer backend/llm_utils.py]
+  A["data/*.jsonl"] --> B["backend/ingest_jsonl.py"]
+  B --> C["NetworkX DiGraph"]
+  C --> D["frontend/src/assets/processed_graph.json"]
+  D --> E["FastAPI backend/main.py<br/>startup load"]
+  F["React ChatBox"] -->|POST /api/chat| E
+  E --> G["LLM layer<br/>backend/llm_utils.py"]
   G -->|Gemini strict JSON| E
-  E -->|answer + relevant_node_ids| F
-  F --> H[GraphView highlightPath(nodeIds)]
-  H --> I[ForceGraph2D visualization]
+  E -->|answer + node_ids| F
+  F --> H["GraphView:<br/>highlight path"]
+  H --> I["ForceGraph2D<br/>visualization"]
 ```
 
 ## Graph Modeling
